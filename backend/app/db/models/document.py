@@ -1,23 +1,43 @@
 from datetime import datetime
 from uuid import UUID, uuid4
 
-from sqlalchemy import Datetime, String
+from sqlalchemy import DateTime, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.database import Base
 
+
 class Document(Base):
-    __table__name = "documents"
+    __tablename__ = "documents"
 
     id: Mapped[UUID] = mapped_column(
         primary_key=True,
-        default=uuid4
+        default=uuid4,
     )
 
-    filename: Mapped[str] = mapped_column(String(255))
-    file_path: Mapped[str] = mapped_column(String(500))
-    mime_type: Mapped[str] = mapped_column(String(100))
+    filename: Mapped[str] = mapped_column(
+        String(255),
+        nullable=False,
+    )
 
-    status: Mapped[str] = mapped_column(String(50), default="uploaded")
+    file_path: Mapped[str] = mapped_column(
+        String(500),
+        nullable=False,
+    )
 
-    created_at : Mapped[datetime] = mapped_column(Datetime, default=datetime.utcnow()) 
+    mime_type: Mapped[str] = mapped_column(
+        String(100),
+        nullable=False,
+    )
+
+    status: Mapped[str] = mapped_column(
+        String(50),
+        default="uploaded",
+        nullable=False,
+    )
+
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime,
+        default=datetime.utcnow,
+        nullable=False,
+    )

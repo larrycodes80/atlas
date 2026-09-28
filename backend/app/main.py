@@ -1,20 +1,18 @@
 from fastapi import FastAPI
 
+from app.core.config import get_settings
+
+settings = get_settings()
+
 app = FastAPI(
-    title="Atlas",
-    version="0.1.0"
+    title=settings.app_name,
 )
+
 
 @app.get("/health")
 async def health_check():
-    return {"status": "ok",
-    "service":"Atlas"}
-
-
-@app.get("/")
-async def home():
     return {
-        "message": "Atlas API is running ",
-        "documentation": "/docs",
-        "health_check": "/health" 
+        "status": "ok",
+        "service": settings.app_name,
+        "environment": settings.app_env,
     }
