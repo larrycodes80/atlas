@@ -1,0 +1,40 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.*
+!.env.example
+!.env-example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+wheels/
+.venv/
+venv/
+ENV/
+env/
+
+# Data and models
+/data/
+/models/
+backend/data/
+backend/models/
+
+# Node / Frontend
+node_modules/
+.npm/
+.next/
+out/
+.turbo/
+*.log
+
+# IDEs
+.idea/
+.vscode/
